@@ -1,0 +1,69 @@
+{% extends "page1.html" %}
+
+{% block header %}
+<a href="/">Сувенирка</a>
+/
+Заказы
+{% endblock %}
+
+{% block content %}
+<center>
+    <div class="row col-12">
+        <div class="col-12"><center>
+            <h1>Заказы</h1>
+            <p>Список заказанных заказов :)</p>
+        </center></div>
+
+        <div class="col lg-2"></div>
+
+        <div class="col-lg-8 col-md-12 col-cm-12">
+            <br>
+            <br>
+            <h2>Список</h2>
+            <div class="row table-responsive justify-content-center"><center>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <td>ID</td>
+                        <td>Заказ</td>
+                        <td>Статус</td>
+                        <td>Платёж</td>
+                        <td>Время заказа</td>
+                        <td>Опции</td>
+                    </tr>
+                    {% for now in orders %}
+                    <tr>
+                        <td>{{ now.id }}</td>
+                        <td>
+                            {% set lst = now.products.split('=') %}
+                            <div class="row">
+                                {% for i in range(0, lst.__len__(), 2) %}
+                                    <div style="float: left; margin-left: 10px;">
+                                        <img width="100px" height="100px" src="design_image?id={{ lst[i] }}">
+                                        <center><p>
+                                            {{ lst[i + 1] }} шт.<br>
+                                            <a href="src_design_image?id={{ lst[i] }}">Дизайн</a><br>
+                                            <a href="design_image?id={{ lst[i] }}">Итог</a>
+                                        </p></center>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </td>
+                        <td>{{ now.get_status() }}</td>
+                        <td>{{ now.payment }}</td>
+                        <td>{{ now.get_time() }}</td>
+                        <td><center>
+                                <p><a href="update_order?id={{ now.id }}">Обновить</a></p>
+                                <p><a href="complete_order?id={{ now.id }}">Выполнено</a></p>
+                                <p><a href="delete_order?id={{ now.id }}">Удалить</a></p>
+                        </center></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </center></div>
+        </div>
+
+        <div class="col lg-2"></div>
+    </div>
+</center>
+
+{% endblock %}

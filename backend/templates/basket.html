@@ -1,0 +1,51 @@
+{% extends "page1.html" %}
+
+{% block header %}
+<a href="/">Сувенирка</a>
+/
+Корзина
+{% endblock %}
+
+{% block content %}
+<center>
+    <div class="row col-12">
+        <div class="col-12"><center>
+            <h1>Корзина</h1>
+        </center></div>
+
+        <div class="col-lg-2"></div>
+
+        <div class="col-lg-8 col-md-12 col-sm-12">
+            <div class="row table-responsive justify-content-center"><center>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <td>№</td>
+                        <td>Название</td>
+                        <td>Дизайн</td>
+                        <td>Стоимость (&#8381;)</td>
+                        <td>Количество</td>
+                        <td>Итого</td>
+                    </tr>
+                </table>
+            </center></div>
+        </div>
+
+        <div class="col-lg-2"></div>
+
+        <div class="col-4"></div>
+
+        <div class="col-2"><center>
+            <h3 id="order-sum">Итого: 0 &#8381;</h3>
+        </center></div>
+
+        <div class="col-2"><center>
+            <button id="order-button" type="button" class="btn btn-primary right">Оформить заказ</button>
+        </center></div>
+
+        <div class="col-4"></div>
+    </div>
+</center>
+
+<script>basketPage(document);</script>
+
+{% endblock %}

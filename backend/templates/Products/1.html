@@ -1,0 +1,42 @@
+{% extends "page2.html" %}
+{% block header %}
+<a href="../">Сувенирка</a>
+/
+<a href="../Types/1.html">Одежда</a>
+/
+Футболка белая
+{% endblock %}
+
+{% block content %}
+<center id="page_content">
+    <h1>Футболка белая</h1>
+    <div class="col-12 row align-items-center">
+        <div class="col">
+            <canvas height="500px" width="500px" class="canvas_canvas" id="canvas"></canvas>
+            <img id="image" class="canvas_image" src="../Images/1.png">
+            <h3>500 &#8381;</h3>
+        </div>
+        <div class="col">
+            <h2>Ваш дизайн</h2>
+            <p>
+               <label>Файл дизайна: <input type="file" id="upload_file"> </label>
+            </p>
+            <p>
+                <label>Лево: <input type="number" id="left" title="Расстояние от левой границы шаблона до центра изображения"></label>
+                <label>Верх: <input type="number" id="top" title="Расстояние от верхней границы шаблона до центра изображения"></label>
+            </p>
+            <p>
+                <label>Ширина: <input type="number" id="width" title="Ширина изображения"></label>
+                <label>Высота: <input type="number" id="height" title="Высота изображения"></label>
+            </p>
+            <p>
+                <label>Масштаб: <input type="number" id="scale" step="0.01" min="0" title="Масштаб исходного изображения"> </label>
+            </p>
+            <p>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_element" data-whatever="product">Заказать</button>
+            </p>
+        </div>
+    </div>
+</center>
+<script>initCanvas(document);modal(document);</script>
+{% endblock %}
